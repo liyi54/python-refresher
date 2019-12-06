@@ -169,7 +169,7 @@ for j in range(5):
     for i in range(5):    # Drawing a Star with a Turtle
         alex.forward(120)
         alex.right(144)
-    alex.penup()
+    # alex.penup()
     alex.forward(350)
     alex.right(144)
     alex.pendown()

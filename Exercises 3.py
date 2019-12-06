@@ -134,28 +134,29 @@ import math
 # find_hypot(opposite, adjacent)
 
 
-def is_right_angled(a, b, c):
-    """This function allows us to determine if a triangle is right-angled
-    irrespective of the order in which the arguments are passes"""
-    sides = [a,b,c]
-    oppAdj = []
-    for i in sides:
-        if i == max(sides):
-            hypot = i
-        else:
-            oppAdj.append(i)
-    if oppAdj[0] ** 2 + oppAdj[1] ** 2 != hypot ** 2:
-        print("This isn't a right angled triangle")
-    else:
-        print("This is a right angled triangle")
-
-
-opposite = int(input("Enter opposite value: "))
-adjacent = int(input("Enter adjacent value: "))
-hypotenuse = int(input("Enter the hypotenuse value"))
-
-is_right_angled(opposite, hypotenuse, adjacent)
+# def is_right_angled(a, b, c):
+#     """This function allows us to determine if a triangle is right-angled
+#     irrespective of the order in which the arguments are passes"""
+#     sides = [a,b,c]
+#     oppAdj = []
+#     for i in sides:
+#         if i == max(sides):
+#             hypot = i
+#         else:
+#             oppAdj.append(i)
+#     if oppAdj[0] ** 2 + oppAdj[1] ** 2 != hypot ** 2:
+#         print("This isn't a right angled triangle")
+#     else:
+#         print("This is a right angled triangle")
+#
+#
+# opposite = int(input("Enter opposite value: "))
+# adjacent = int(input("Enter adjacent value: "))
+# hypotenuse = int(input("Enter the hypotenuse value"))
+#
+# is_right_angled(opposite, hypotenuse, adjacent)
 
 # a = math.sqrt(2.0)
 # print(a, a * a)
 # print(a * a == 2.0)
+
