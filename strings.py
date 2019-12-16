@@ -78,12 +78,12 @@ def count_chars(character, word):
 
 print(count_chars(character = "e", word = "whatever"))
 
-theodore = """It is not the critic who counts; not the man who points out how the strong man stumbles, or where the 
-doer of deeds could have done them better. The credit belongs to the man who is actually in the arena, whose face is 
-marred by dust and sweat and blood; who strives valiantly; who errs, who comes short again and again, because there 
-is no effort without error and shortcoming; but who does actually strive to do the deeds; who knows great 
-enthusiasms, the great devotions; who spends himself in a worthy cause; who at the best knows in the end the triumph 
-of high achievement, and who at the worst, if he fails, at least fails while daring greatly, so that his place shall 
+theodore = """It is not the critic who counts; not the man who points out how the strong man stumbles, or where the
+doer of deeds could have done them better. The credit belongs to the man who is actually in the arena, whose face is
+marred by dust and sweat and blood; who strives valiantly; who errs, who comes short again and again, because there
+is no effort without error and shortcoming; but who does actually strive to do the deeds; who knows great
+enthusiasms, the great devotions; who spends himself in a worthy cause; who at the best knows in the end the triumph
+of high achievement, and who at the worst, if he fails, at least fails while daring greatly, so that his place shall
 never be with those cold and timid souls who neither know victory nor defeat. """
 
 
@@ -184,3 +184,14 @@ def test_suite():
 test_suite()
 
 
+def triangle_area(x):
+    """This function takes a tuple as a parameter and returns a tuple
+    as output"""
+    a = 0.5 * x[0] * x[1]
+    p = x[0] + x[1] + x[2]
+    return(a,p)
+
+
+values = (3,4,5)
+(base,height,hypotenuse) = values
+print("The area and perimeter of the triangle are {0}".format(triangle_area(values)))
