@@ -42,6 +42,9 @@ class Point:
         b = self.y - (m * self.x)
         return (m,b)
 
+    def same_coordinates(p1,p2):
+        return (p1.x == p2.x) and (p1.y == p2.y)
+
 
 class SmsStore:
 
@@ -110,13 +113,13 @@ class SmsStore:
 # print(p.x , p.y, q.x, q.y, r)
 # print((Point(4, 11).get_line_to(Point(6, 15))))
 
-my_inbox = SmsStore(True,"012347789","11:00am","In a meeting, pls call later")
-print(my_inbox.message_store)
-print(my_inbox.add_new_arrival("08154329106","10:00pm","Pls call me back"))
-# print(my_inbox.message_count())
-# print(my_inbox.get_unread_indexes())
-print(my_inbox.delete(1))
-print(my_inbox.clear())
+# my_inbox = SmsStore(True,"012347789","11:00am","In a meeting, pls call later")
+# print(my_inbox.message_store)
+# print(my_inbox.add_new_arrival("08154329106","10:00pm","Pls call me back"))
+# # print(my_inbox.message_count())
+# # print(my_inbox.get_unread_indexes())
+# print(my_inbox.delete(1))
+# print(my_inbox.clear())
 # print(my_inbox.get_full_message(1))
 # print(my_inbox.get_message(2))
 
