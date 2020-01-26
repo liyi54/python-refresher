@@ -8,11 +8,44 @@ class Point:
         self.x = x  # assign attributes to the instance of the class
         self.y = y
 
+    def __add__(self, other):
+        """add x and y coordinates of both objects """
+        return Point(self.x + other.x, self.y + other.y )
+
+    def __mul__(self, other):
+        try:
+            return self.x * other.x + self.y * other.y
+        except AttributeError:
+            print("Scalar should be on the left: {0}".format(AttributeError))
+
+    def __rmul__(self, other):
+        return Point(other * self.x, other * self.y)
 
     def distance_from_origin(self):
         """Compute my distance from origin"""
         return math.sqrt((self.x**2)+(self.y**2))
 
+    def reverse(self):
+        (self.x, self.y) = (self.y, self.x)
+        # return self.x, self.y
+
+    # def between(self, t1, t2):
+    #     return (t1.x <= self.x and t1.y <= self.y) and (self.x < t2.x and self.y < t2.y)
+
+    def __lt__(self, other):
+        return self.x < other.x and self.y < other.y
+
+    def __le__(self, other):
+        return self.x <= other.x and self.y <= other.y
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+    def __ge__(self, other):
+        return self.x >= other.x and self.y >= other.y
+
+    def __gt__(self, other):
+        return self.x > other.x and self.y > other.y
 
     def __str__(self):
         return ("({0}, {1})".format(self.x, self.y))
@@ -44,6 +77,24 @@ class Point:
 
     def same_coordinates(p1,p2):
         return (p1.x == p2.x) and (p1.y == p2.y)
+
+
+def multadd(x,y,z):
+    """Polymorphic function"""
+    return x * y + z
+
+
+def front_and_back(front):
+    """Polymorphic function"""
+    import copy
+    back = copy.copy(front)
+    back.reverse()
+    print(str(front) + str(back))
+
+
+def between(x,y,z):
+    """Polymorphic function"""
+    return y <= x < z
 
 
 class SmsStore:
@@ -85,7 +136,6 @@ class SmsStore:
         else:
             return None
 
-
     def delete(self,index):
         self.message_store.pop(index)
         return self.message_store
@@ -123,3 +173,20 @@ class SmsStore:
 # print(my_inbox.get_full_message(1))
 # print(my_inbox.get_message(2))
 
+# print(Point(2,3)*Point(3,4))
+# print(2 * Point(4, 6))
+# print(Point(3,4) * 2)
+
+# p1 = Point(3, 4)
+# p2 = Point(5, 7)
+# print(multadd (2, p1, p2))
+# print(multadd (p1, p2, 1))
+
+# my_list = [1, 2, 3, 4]
+# print(front_and_back(p1))
+
+# print(Point(5,6).between(Point(2,3),Point(10,12)))
+# print(Point(11,6).between(Point(2,3),Point(10,12)))
+
+print(between(2,1,4))
+print(between(Point(5, 6), Point(2, 3), Point(10, 12)))

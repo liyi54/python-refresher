@@ -147,7 +147,7 @@ def get_words_in_book(filename):
     return wds
 
 
-bigger_vocab = load_words_from_file("/Users/sadeliyi/Documents/Data Science/build/_downloads/vocab.txt")
+# bigger_vocab = load_words_from_file("/Users/sadeliyi/Documents/Data Science/build/_downloads/vocab.txt")
 # print("There are {0} words in the vocab, starting with\n {1} "
 #               .format(len(bigger_vocab), bigger_vocab[:6]))
 
@@ -170,14 +170,14 @@ bigger_vocab = load_words_from_file("/Users/sadeliyi/Documents/Data Science/buil
 # unit_tester.test(text_to_words('"Well, I never!", said Alice.') ==
 #                              ["well", "i", "never", "said", "alice"])
 
-all_words = get_words_in_book("/Users/sadeliyi/Documents/Data Science/build/_downloads/alice_in_wonderland.txt")
-t0 = time.process_time()
-all_words.sort()
-book_words = remove_adjacent_dups(all_words)
-missing_words = find_unknowns_merge_pattern(bigger_vocab, book_words)
-t1 = time.process_time()
-print("There are {0} unknown words.".format(len(missing_words)))
-print("That took {0:.4f} seconds.".format(t1-t0))
+# all_words = get_words_in_book("/Users/sadeliyi/Documents/Data Science/build/_downloads/alice_in_wonderland.txt")
+# t0 = time.process_time()
+# all_words.sort()
+# book_words = remove_adjacent_dups(all_words)
+# missing_words = find_unknowns_merge_pattern(bigger_vocab, book_words)
+# t1 = time.process_time()
+# print("There are {0} unknown words.".format(len(missing_words)))
+# print("That took {0:.4f} seconds.".format(t1-t0))
 
 # book_words = remove_adjacent_dups(all_words)
 # print("There are {0} words in the book. Only {1} are unique.".

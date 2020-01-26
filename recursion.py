@@ -1,5 +1,6 @@
 import unit_tester as ut
 import os
+import time
 # import turtle
 #
 # wn = turtle.Screen()
@@ -142,18 +143,10 @@ def count(value, target):
 
 
 def fib(fib_len):
-    start = 0
-    next = 1
-    i = 0
     if fib_len <= 1:
         return 1
     else:
-        while i < fib_len:
-            val = start + next
-            start = next
-            next = val
-            i += 1
-        return val
+        return fib(fib_len - 1) + fib(fib_len-2)
 
 
 def print_path(path):
@@ -196,6 +189,6 @@ def print_path(path):
 #               ["this","a","thing","a","is","a","easy"])
 # ut.test(flatten([]) == [])
 
-# print(fib(200))
+print(fib(10))
 
 # print_path('/Users/sadeliyi/Documents/Data Science')

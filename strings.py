@@ -103,7 +103,7 @@ def remove_punct():
     return output
 
 
-print(remove_punct())
+# print(remove_punct())
 
 layout = "{0:>4}{1:>4}{2:>4}{3:>4}{4:>4}{5:>4}{6:>4}{7:>4}{8:>4}{9:>4}{10:>4}{11:>4}"
 print(layout.format("1*", "2*", "3*", "4*", "5*", "6*", "7*", "8*", "9*", "10*", "11*", "12*"))
@@ -115,83 +115,83 @@ for i in range(1, 13):
     print()
 
 
-def rev_string(x):
-    reverse = ""
-    for i in range(-1,-(len(x)+1),-1):
-        reverse += x[i]
-    return reverse
-
-
-def mirror(x):
-    mirrored = x + rev_string(x)
-    return mirrored
-
-
-def test(did_pass):
-    """  Print the result of a test.  """
-    line_num = sys._getframe(1).f_lineno   # Get the caller's line number.
-    if did_pass:
-        msg = "Test at line {0} ok.".format(line_num)
-    else:
-        msg = "Test at line {0} FAILED.".format(line_num)
-    print(msg)
-
-
-def test_suite():
-    ss = "Python strings have some interesting methods."
-    test(find(ss, "s") == 7)
-    test(find(ss, "s", 7) == 7)
-    test(find(ss, "s", 8) == 13)
-    test(find(ss, "s", 8, 13) == -1)
-    test(find(ss, ".") == len(ss) - 1)
-
-    test(ss.find("s") == 7)
-    test(ss.find("s", 7) == 7)
-    test(ss.find("s", 8) == 13)
-    test(ss.find("s", 8, 13) == -1)
-    test(ss.find(".") == len(ss) - 1)
-    test(ss.find("str") == 7)
-
-    test(remove_punctuation('"Well, I never did!", said Alice.') ==
-         "Well I never did said Alice")
-    test(remove_punctuation("Are you very, very, sure?") ==
-         "Are you very very sure")
-
-    my_story = """
-    Pythons are constrictors, which means that they will 'squeeze' the life
-    out of their prey. They coil themselves around their prey and with
-    each breath the creature takes the snake will squeeze a little tighter
-    until they stop breathing completely. Once the heart stops the prey
-    is swallowed whole. The entire animal is digested in the snake's
-    stomach except for fur or feathers. What do you think happens to the fur,
-    feathers, beaks, and eggshells? The 'extra stuff' gets passed out as ---
-    you guessed it --- snake POOP! """
-
-    wds = remove_punctuation(my_story).split()
-    # print(wds)
-
-    test(rev_string("happy") == "yppah")
-    test(rev_string("Python") == "nohtyP")
-    test(rev_string("") == "")
-    test(rev_string("a") == "a")
-
-    test(mirror("good") == "gooddoog")
-    test(mirror("Python") == "PythonnohtyP")
-    test(mirror("") == "")
-    test(mirror("a") == "aa")
-
-
-test_suite()
-
-
-def triangle_area(x):
-    """This function takes a tuple as a parameter and returns a tuple
-    as output"""
-    a = 0.5 * x[0] * x[1]
-    p = x[0] + x[1] + x[2]
-    return(a,p)
-
-
-values = (3,4,5)
-(base,height,hypotenuse) = values
-print("The area and perimeter of the triangle are {0}".format(triangle_area(values)))
+# def rev_string(x):
+#     reverse = ""
+#     for i in range(-1,-(len(x)+1),-1):
+#         reverse += x[i]
+#     return reverse
+#
+#
+# def mirror(x):
+#     mirrored = x + rev_string(x)
+#     return mirrored
+#
+#
+# def test(did_pass):
+#     """  Print the result of a test.  """
+#     line_num = sys._getframe(1).f_lineno   # Get the caller's line number.
+#     if did_pass:
+#         msg = "Test at line {0} ok.".format(line_num)
+#     else:
+#         msg = "Test at line {0} FAILED.".format(line_num)
+#     print(msg)
+#
+#
+# def test_suite():
+#     ss = "Python strings have some interesting methods."
+#     test(find(ss, "s") == 7)
+#     test(find(ss, "s", 7) == 7)
+#     test(find(ss, "s", 8) == 13)
+#     test(find(ss, "s", 8, 13) == -1)
+#     test(find(ss, ".") == len(ss) - 1)
+#
+#     test(ss.find("s") == 7)
+#     test(ss.find("s", 7) == 7)
+#     test(ss.find("s", 8) == 13)
+#     test(ss.find("s", 8, 13) == -1)
+#     test(ss.find(".") == len(ss) - 1)
+#     test(ss.find("str") == 7)
+#
+#     test(remove_punctuation('"Well, I never did!", said Alice.') ==
+#          "Well I never did said Alice")
+#     test(remove_punctuation("Are you very, very, sure?") ==
+#          "Are you very very sure")
+#
+#     my_story = """
+#     Pythons are constrictors, which means that they will 'squeeze' the life
+#     out of their prey. They coil themselves around their prey and with
+#     each breath the creature takes the snake will squeeze a little tighter
+#     until they stop breathing completely. Once the heart stops the prey
+#     is swallowed whole. The entire animal is digested in the snake's
+#     stomach except for fur or feathers. What do you think happens to the fur,
+#     feathers, beaks, and eggshells? The 'extra stuff' gets passed out as ---
+#     you guessed it --- snake POOP! """
+#
+#     wds = remove_punctuation(my_story).split()
+#     # print(wds)
+#
+#     test(rev_string("happy") == "yppah")
+#     test(rev_string("Python") == "nohtyP")
+#     test(rev_string("") == "")
+#     test(rev_string("a") == "a")
+#
+#     test(mirror("good") == "gooddoog")
+#     test(mirror("Python") == "PythonnohtyP")
+#     test(mirror("") == "")
+#     test(mirror("a") == "aa")
+#
+#
+# test_suite()
+#
+#
+# def triangle_area(x):
+#     """This function takes a tuple as a parameter and returns a tuple
+#     as output"""
+#     a = 0.5 * x[0] * x[1]
+#     p = x[0] + x[1] + x[2]
+#     return(a,p)
+#
+#
+# values = (3,4,5)
+# (base,height,hypotenuse) = values
+# print("The area and perimeter of the triangle are {0}".format(triangle_area(values)))
