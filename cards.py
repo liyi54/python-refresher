@@ -76,8 +76,131 @@ class Deck:
     def pop(self):
         return self.cards.pop()
 
-    def isEmpty(self):
+    def is_empty(self):
         return len(self.cards) == 0
+
+    def deal(self, hands, num_cards=999):  # The num_cards default value is all the cards
+        num_hands = len(hands)
+        for i in range(num_cards):
+            if self.is_empty():
+                break
+            card = self.pop()
+            hand = hands[i % num_hands]  # This distributes the cards using a round-robin approach
+            hand.add(card)
+
+
+class Hand(Deck):
+    def __init__(self, name=""):
+        self.cards = []
+        self.name = name
+
+    def add(self, card):
+        self.cards.append(card)
+
+    def __str__(self):  # This overrides the string method in the Deck class
+        s = "Hand " + self.name
+        if self.is_empty():
+            s += " is empty \n"
+        else:
+            s += " contains: \n"
+        return s + Deck.__str__(self)
+
+    # def print_hands(self, names):
+    #     hands = ""
+    #     for name in names:
+    #         s = "Hand " + self.name
+    #         if self.is_empty():
+    #             s += " is empty \n"
+    #         else:
+    #             s += " contains: \n"
+    #         hands += s + Deck.__str__(self)
+    #     return hands
+
+
+
+class CardGame:
+    def __init__(self):
+        self.deck = Deck()
+        self.deck.shuffle2()
+
+
+class OldMaidHand(Hand):
+    def remove_matches(self):
+        count = 0
+        original_cards = self.cards.copy()
+        for card in original_cards:
+            match = Card(3 - card.suit, card.rank)  # Using cards of the same rank and color to match the cards
+            if match in self.cards:
+                self.cards.remove(card)
+                self.cards.remove(match)
+                print("Hand {0}: {1} matches card {2}".format(self.name, card, match))
+                count += 1
+        return count
+
+
+class OldMaidGame(CardGame):
+
+    def find_neighbor(self, i):
+        num_hands = len(self.hands)
+        for next in range(1, num_hands):
+            neighbor = (i + next) % num_hands
+            if not self.hands[neighbor].is_empty():
+                return neighbor
+
+    def play_one_turn(self, i):
+        if self.hands[i].is_empty():
+            return 0
+        neighbor = self.find_neighbor(i)
+        picked_card = self.hands[neighbor].pop()
+        self.hands[i].add(picked_card)
+        print("Hand {0} picked {1}".format(self.hands[i].name, picked_card))
+        count = self.hands[i].remove_matches()
+        self.hands[i].shuffle2()
+        return count
+
+    def remove_all_matches(self):
+        count = 0
+        for hand in self.hands:
+            count += hand.remove_matches()
+        return count
+
+    def print_hands(self):
+        for hand in self.hands:
+            print(hand.__str__())
+
+    def play(self, names):
+        # We remove the queen of clubs
+        self.deck.remove(Card(0,12))
+
+        # Make a hand for each player
+        self.hands = []
+        for name in names:
+            self.hands.append(OldMaidHand(name))
+        print("---- Hands made for each player ----")
+
+        # Deal the cards
+        self.deck.deal(self.hands)
+        print("---- Cards have been dealt ----")
+
+        # Remove initial matches
+        # for name in names:
+        #     matches = OldMaidHand(name).remove_matches()
+        matches = self.remove_all_matches()
+        print("--- Matches discarded, play begins ---")
+        self.print_hands()
+
+        # Play until all 50 cards are matched: because the queen of clubs can't be matched
+        turn = 0
+        num_hands = len(self.hands)
+        while matches < 25:
+            matches += self.play_one_turn(turn)
+            turn = (turn + 1) % num_hands
+        print("--- Game Over ---")
+        self.print_hands()
+
+
+
+
 
 # Card1 = Card(0, 3)
 # Card2 = Card(1, 11)
@@ -86,7 +209,26 @@ class Deck:
 # print(Card1 > Card2)
 # print(Card1 == Card3)
 
-red_deck = Deck()
-blue_deck = Deck()
+# red_deck = Deck()
+# blue_deck = Deck()
+#
+# print(red_deck)
 
-print(red_deck)
+# deck = Deck()
+# deck.shuffle2()
+#
+# hand1 = Hand("frank") # Each hand is an object
+# hand2 = Hand("swiss")
+# # print(hand.cards)
+# deck.deal([hand1, hand2], 5) # We pass a list of objects representing a list of hands
+#
+# # print(len([hand]))
+# print(hand1)
+# print(hand2)
+
+game = OldMaidGame()
+game.play(['Frank', 'John', 'Jeff', 'Derrick', 'Joe'])
+
+# print(hand)
+
+# print(hand.remove_matches())
